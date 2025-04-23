@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reggae Mood Matcher</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      transition: background-color 0.5s ease;
+    }
+    .container {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
+    h1 {
+      color: #d62828;
+      margin-bottom: 20px;
+    }
+    select, button {
+      padding: 10px;
+      font-size: 1rem;
+      margin: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #f77f00;
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background-color: #f48c06;
+    }
+    #quote {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎶 Reggae Mood Matcher 🎶</h1>
+    <label for="mood">What’s your vibe?</label>
+    <select id="mood">
+      <option value="chill">Chill</option>
+      <option value="inspired">Inspired</option>
+      <option value="rebellious">Rebellious</option>
+      <option value="romantic">In Love</option>
+    </select>
+    <br>
+    <button onclick="showQuote()">Match My Mood</button>
+    <div id="quote">Pick your mood to see some reggae wisdom.</div>
+  </div>
+
+  <script>
+    const quotes = {
+      chill: [
+        "Don't worry about a thing, 'cause every little thing gonna be all right. – Bob Marley",
+        "Life is one big road with lots of signs. So when you riding through the ruts, don't complicate your mind. – Bob Marley",
+        "Wake up and live! – Bob Marley"
+      ],
+      inspired: [
+        "Live for yourself and you will live in vain; live for others, and you will live again. – Bob Marley",
+        "The greatness of a man is not in how much wealth he acquires, but in his integrity and ability to affect those around him positively. – Bob Marley",
+        "Love the life you live. Live the life you love. – Bob Marley"
+      ],
+      rebellious: [
+        "Better to die fighting for freedom than be a prisoner all the days of your life. – Bob Marley",
+        "Get up, stand up, stand up for your rights. Don’t give up the fight. – Bob Marley",
+        "Emancipate yourselves from mental slavery. None but ourselves can free our minds. – Bob Marley"
+      ],
+      romantic: [
+        "She may not be the most popular or prettiest, but if you love her and she makes you smile... what else matters? – Bob Marley",
+        "The truth is, everyone is going to hurt you. You just got to find the ones worth suffering for. – Bob Marley",
+        "One love, one heart... let’s get together and feel all right. – Bob Marley"
+      ]
+    };
+
+    function showQuote() {
+      const mood = document.getElementById("mood").value;
+      const selectedQuotes = quotes[mood];
+      const quote = selectedQuotes[Math.floor(Math.random() * selectedQuotes.length)];
+      document.getElementById("quote").textContent = quote;
+
+      // Optional: Change background color based on mood
+      const bgColors = {
+        chill: '#d8f3dc',
+        inspired: '#ffecd1',
+        rebellious: '#ffe5ec',
+        romantic: '#fce4ec'
+      };
+      document.body.style.backgroundColor = bgColors[mood];
+    }
+  </script>
+</body>
+</html>
